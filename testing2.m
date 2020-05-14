@@ -21,7 +21,8 @@ icon2 = fullfile('MATLAB', 'dotas5.png');
 
 %% --- INPUTS
 
-
+ktlat = 54.6377;
+ktlon = 25.2874;
 ktheading = 345;
 Lkt = 700;
 Wkt = 30;
