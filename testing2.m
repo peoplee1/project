@@ -301,7 +301,7 @@ ph04 = plot(ax04, [hCross.lef.x hCross.rit.x], [hCross.lef.y(i) hCross.rit.y(i)]
     'LineWidth',3,'LineStyle','-','Color',[.9 .6 .1]);
 
 
-
+return
 %% --- RUN LOOP
 
 for ii = 1:r
