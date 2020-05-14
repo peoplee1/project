@@ -1,5 +1,5 @@
 close all; clear; clc;
-P.home = which('testing2.m'); cd(P.home);
+P.home = fileparts(which('testing2.m')); cd(P.home);
 P.funs  = [P.home filesep 'funs'];
 P.data  = [P.home filesep 'data'];
 addpath(join(string(struct2cell(P)),pathsep,1))
@@ -8,6 +8,7 @@ cd(P.home); P.f = filesep;
 
 
 %% - IMPORT ICONS
+
 e = referenceEllipsoid('wgs84');
 icon1 = fullfile('MATLAB', 'localizer1.png');
 icon2 = fullfile('MATLAB', 'dotas5.png');
