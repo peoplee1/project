@@ -1,10 +1,26 @@
-clc; close all; clear
+close all; clear; clc;
+P.home = which('testing2.m'); cd(P.home);
+P.funs  = [P.home filesep 'funs'];
+P.data  = [P.home filesep 'data'];
+addpath(join(string(struct2cell(P)),pathsep,1))
+cd(P.home); P.f = filesep;
 
+
+
+%% - IMPORT ICONS
 e = referenceEllipsoid('wgs84');
 icon1 = fullfile('MATLAB', 'localizer1.png');
 icon2 = fullfile('MATLAB', 'dotas5.png');
 
-%----------------INPUT------------------------------------------------------
+
+
+
+
+
+
+%% --- INPUTS
+
+
 ktheading = 345;
 Lkt = 700;
 Wkt = 30;
@@ -21,7 +37,8 @@ Nwaypoints = 3;
 
 
 
-%------------------------------------------------------------------------%
+%% --- RECKON
+
 [tplat,tplon] = reckon(ltlat,ltlon,Llt/3,ltazi,e);
 
 [lat3km,lon3km] = reckon(tplat,tplon,3000,ltazi,e);    
@@ -38,21 +55,32 @@ Nwaypoints = 3;
 
 
 
-%------------------------HEADING---------------------------------------
-%%
+
+
+
+%% --- HEADING
+
 LATS = [54.64151 54.66111 54.68602 54.70016 54.68354];
 LONS = [25.28556 25.27784 25.30548 25.35380 25.49567];
 
 LATLIST = [54.69222   54.70081   54.70826];
 LONLIST = [25.31762   25.36251   25.44969];     
 
-%%
+
+
+
+
+
+%% --- WMLINE
 
 
 %wmline(LATLIST,LONLIST);
 %wmline([LATS(end) lat3km],[LONS(end) lon3km]);
 
-%------------------------------------------------------------------------------
+
+
+
+%% --- IMPORT DATA
 
 OPT = detectImportOptions('flight8.txt');
 data = readtable('flight8.txt',OPT);
