@@ -320,12 +320,6 @@ ph04 = plot(ax04, [hCross.lef.x hCross.rit.x], [hCross.lef.y(i) hCross.rit.y(i)]
     'LineWidth',3,'LineStyle','-','Color',[.9 .6 .1]);
 
 
-<<<<<<< HEAD
-return
-=======
-
-
->>>>>>> 5395f0a6c71bb041da793c90f9e491cc42c4651e
 %% --- RUN LOOP
 
 for ii = 1:r

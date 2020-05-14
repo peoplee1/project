@@ -205,7 +205,7 @@ for i = 1:r
 
     % OUTER CIRCLE
     % ------------------------------
-    rout = 1200;
+    rout = 12000;
     ang=0:0.01:2*pi; 
     xc=0;
     yc=0;
@@ -225,54 +225,57 @@ for i = 1:r
 
     % VERTICAL CROSS
     % ------------------------------
-    r1 = sqrt(abs((rout^2)-(min(DEVDATA(i)).^2))); 
-    vCross.top.x(i) =  min(DEVDATA(i)); % motion
-    vCross.top.y =  r1; % static
-    vCross.bot.x(i) =  min(DEVDATA(i)); % motion
-    vCross.bot.y = -r1; % static
+    r1 = sqrt(abs((rout^2)-(min(DEVDATA(i,:)).^2))); 
+    vCross.top.x(i) = min(DEVDATA(i,:)); % motion
+    vCross.bot.x(i) = min(DEVDATA(i,:)); % motion
 
 
     % HORIZONTAL CROSS
     % ------------------------------
     r2 = sqrt(abs((rout^2)-(vdevmeters(i)).^2)); 
-    hCross.lef.x = -r2; % static
+
     hCross.lef.y(i) =  vdevmeters(i); % motion
-    hCross.rit.x =  r2; % static
     hCross.rit.y(i) =  vdevmeters(i); % motion
+
 
 end
 
 
+vCross.top.y =  r1; % static
+vCross.bot.y = -r1; % static
+hCross.lef.x = -r2; % static
+hCross.rit.x =  r2; % static
+
+
+%[round(vCross.bot.x)' round(vCross.top.x)' round(hCross.lef.y)' round(hCross.rit.y)']
 
 
 
-[round(vCross.bot.x)' round(vCross.top.x)' round(hCross.lef.y)' round(hCross.rit.y)']
-
-
-return
 %% --- GENERATE FIGURE
 close all;
+
+LIMS = 12000;
 
 fh01 = figure('Units','pixels','Position',[100 100 700 600],'Color','w');
 
 ax01 = axes('Position',[.1 .1 .8 .8],'Color','none',...
     'XColor','none','YColor','none'); hold on; axis square; 
-    xlim([-1200 1200]); ylim([-1200 1200]); hold on;
+    xlim([-LIMS LIMS]); ylim([-LIMS LIMS]); hold on;
 
 
 ax02 = axes('Position',[.1 .1 .8 .8],'Color','none',...
     'XColor','none','YColor','none'); hold on; axis square;
-    xlim([-1200 1200]); ylim([-1200 1200]); hold on;
+    xlim([-LIMS LIMS]); ylim([-LIMS LIMS]); hold on;
 
 
 ax03 = axes('Position',[.1 .1 .8 .8],'Color','none',...
     'XColor','none','YColor','none'); hold on; axis square; 
-    xlim([-1200 1200]); ylim([-1200 1200]); hold on;
+    xlim([-LIMS LIMS]); ylim([-LIMS LIMS]); hold on;
 
 
 ax04 = axes('Position',[.1 .1 .8 .8],'Color','none',...
     'XColor','none','YColor','none'); hold on; axis square;
-    xlim([-1200 1200]); ylim([-1200 1200]); hold on;
+    xlim([-LIMS LIMS]); ylim([-LIMS LIMS]); hold on;
 
 
 
