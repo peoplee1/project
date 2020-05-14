@@ -123,6 +123,8 @@ hdev2 = sind(alpha2).*distWP1AC;                                       %SAVE
 
 
 %% --- DEVIATION OF WP TO WP+1
+
+k = Nwaypoints;
  
 distWPkAC = distance(LATS(k),LONS(k),data.VarName2,data.VarName2,e);
  
@@ -181,10 +183,10 @@ hdevs = abs(DEVDATA);
 
         angleTPAC = atan2d(data.VarName4,distTPAC);
         vdeviation = angleTPAC - angleGP;
-        vdevmeters = distTPAC*(tand(vdeviation));              %SAVE
+        vdevmeters = distTPAC*(tand(vdeviation));                     %SAVE
 
     else
-        vdevmeters = data.VarName4 - cruiseALT;                               %SAVE
+        vdevmeters = data.VarName4 - cruiseALT;                       %SAVE
     end
     
 
@@ -246,33 +248,55 @@ end
 
 
 %% --- GENERATE FIGURE
+close all;
 
-h01 = figure('Units','pixels','Position',[100 100 700 600],'Color','w');h01 = figure('Units','pixels','Position',[100 100 700 600],'Color','w');
+fh01 = figure('Units','pixels','Position',[100 100 700 600],'Color','w');
+
 ax01 = axes('Position',[.1 .1 .8 .8],'Color','none',...
-    'XColor','none','YColor','none'); axis square; 
+    'XColor','none','YColor','none'); hold on; axis square; 
     xlim([-1200 1200]); ylim([-1200 1200]); hold on;
+
+
 ax02 = axes('Position',[.1 .1 .8 .8],'Color','none',...
-    'XColor','none','YColor','none'); axis square;
+    'XColor','none','YColor','none'); hold on; axis square;
     xlim([-1200 1200]); ylim([-1200 1200]); hold on;
+
+
 ax03 = axes('Position',[.1 .1 .8 .8],'Color','none',...
-    'XColor','none','YColor','none'); axis square; 
+    'XColor','none','YColor','none'); hold on; axis square; 
     xlim([-1200 1200]); ylim([-1200 1200]); hold on;
+
+
 ax04 = axes('Position',[.1 .1 .8 .8],'Color','none',...
-    'XColor','none','YColor','none'); axis square;
-    xlim([-1200 1200]); ylim([-1200 1200]);
-    hold(ax04,'on');
+    'XColor','none','YColor','none'); hold on; axis square;
+    xlim([-1200 1200]); ylim([-1200 1200]); hold on;
 
 
 
 
 %% --- PLOT FIRST DATA POINTS
 
+% STATIC
+vCross.bot.y = -1200;
+vCross.top.y =  1200;
+hCross.lef.x = -1200;
+hCross.rit.x =  1200;
+
+% DYNAMIC
+vCross.bot.x = -0;
+vCross.top.x =  0;
+hCross.lef.y = -0;
+hCross.rit.y =  0;
+
+i = 1;
+
 ph01 = plot(ax01, xp1, yp1,'LineWidth',3,'LineStyle','-','Color',[.1 .3 .5]);
-hold on
+
 ph02 = plot(ax02, xp2, yp2,'LineWidth',5,'LineStyle','-','Color',[.1 .3 .5]);
-hold on
+
 ph03 = plot(ax03, [vCross.bot.x(i) vCross.top.x(i)], [vCross.bot.y vCross.top.y],...
     'LineWidth',3,'LineStyle','-','Color',[.9 .6 .1]);
+
 ph04 = plot(ax04, [hCross.lef.x hCross.rit.x], [hCross.lef.y(i) hCross.rit.y(i)],...
     'LineWidth',3,'LineStyle','-','Color',[.9 .6 .1]);
 
@@ -284,12 +308,12 @@ for ii = 1:r
     %wmmarker(data.VarName2(ii), data.VarName3(ii),'Icon', icon2);
     %wmremove;
 
-    ph03.XData = [vCross.bot.x(ii)      vCross.top.x(ii)];
+    ph03.XData = [vCross.bot.x(ii)  vCross.top.x(ii)];
     ph03.YData = [vCross.bot.y      vCross.top.y];
 
     ph04.XData = [hCross.lef.x      hCross.rit.x];
-    ph04.YData = [hCross.lef.y(ii)      hCross.rit.y(ii)];
+    ph04.YData = [hCross.lef.y(ii)  hCross.rit.y(ii)];
 
-    pause(.02)
+    pause(.1)
 end
 
