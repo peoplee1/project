@@ -1,0 +1,10 @@
+# Do not include temporary matlab files
+*.m~
+
+# Do not include data files
+*.mat
+*.csv
+*.txt
+
+# Do not include these folders
+private/*
