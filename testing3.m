@@ -201,11 +201,15 @@ vdevs = abs(vdevmeters);
 
 %% --- RUN LOOP
 
+
+LIMS = 12000;
+
+
 for i = 1:r
 
     % OUTER CIRCLE
     % ------------------------------
-    rout = 12000;
+    rout = LIMS;
     ang=0:0.01:2*pi; 
     xc=0;
     yc=0;
