@@ -277,16 +277,22 @@ ax04 = axes('Position',[.1 .1 .8 .8],'Color','none',...
 %% --- PLOT FIRST DATA POINTS
 
 % STATIC
-vCross.bot.y = -1200;
-vCross.top.y =  1200;
-hCross.lef.x = -1200;
-hCross.rit.x =  1200;
+% vCross.bot.y = -1200;
+% vCross.top.y =  1200;
+% hCross.lef.x = -1200;
+% hCross.rit.x =  1200;
 
 % DYNAMIC
-vCross.bot.x = -0;
-vCross.top.x =  0;
-hCross.lef.y = -0;
-hCross.rit.y =  0;
+% vCross.bot.x = -0;
+% vCross.top.x =  0;
+% hCross.lef.y = -0;
+% hCross.rit.y =  0;
+
+vCross.bot.x = rescale(vCross.bot.x,-1200,1200);
+vCross.top.x = rescale(vCross.top.x,-1200,1200);
+hCross.lef.y = rescale(hCross.lef.y,-1200,1200);
+hCross.rit.y = rescale(hCross.rit.y,-1200,1200);
+
 
 i = 1;
 
@@ -299,6 +305,7 @@ ph03 = plot(ax03, [vCross.bot.x(i) vCross.top.x(i)], [vCross.bot.y vCross.top.y]
 
 ph04 = plot(ax04, [hCross.lef.x hCross.rit.x], [hCross.lef.y(i) hCross.rit.y(i)],...
     'LineWidth',3,'LineStyle','-','Color',[.9 .6 .1]);
+
 
 
 
