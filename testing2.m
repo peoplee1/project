@@ -246,7 +246,10 @@ end
 
 
 
+[round(vCross.bot.x)' round(vCross.top.x)' round(hCross.lef.y)' round(hCross.rit.y)']
 
+
+return
 %% --- GENERATE FIGURE
 close all;
 
@@ -273,7 +276,6 @@ ax04 = axes('Position',[.1 .1 .8 .8],'Color','none',...
 
 
 
-
 %% --- PLOT FIRST DATA POINTS
 
 % STATIC
@@ -288,10 +290,21 @@ ax04 = axes('Position',[.1 .1 .8 .8],'Color','none',...
 % hCross.lef.y = -0;
 % hCross.rit.y =  0;
 
-vCross.bot.x = rescale(vCross.bot.x,-1200,1200);
-vCross.top.x = rescale(vCross.top.x,-1200,1200);
-hCross.lef.y = rescale(hCross.lef.y,-1200,1200);
-hCross.rit.y = rescale(hCross.rit.y,-1200,1200);
+% vCross.bot.x = rescale(vCross.bot.x,-1200,1200);
+% vCross.top.x = rescale(vCross.top.x,-1200,1200);
+% hCross.lef.y = rescale(hCross.lef.y,-1200,1200);
+% hCross.rit.y = rescale(hCross.rit.y,-1200,1200);
+
+
+% vCross.bot.x(vCross.bot.x < -1200) = -1200;
+% vCross.top.x(vCross.top.x > 1200) = 1200;
+% hCross.lef.y(hCross.lef.y < -1200) = -1200;
+% hCross.rit.y(hCross.rit.y > 1200) = 1200;
+% 
+% vCross.bot.x(vCross.bot.x > 1200) = 1200;
+% vCross.top.x(vCross.top.x < -1200) = -1200;
+% hCross.lef.y(hCross.lef.y < 1200) = 1200;
+% hCross.rit.y(hCross.rit.y > -1200) = -1200;
 
 
 i = 1;
